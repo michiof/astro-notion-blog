@@ -38,8 +38,8 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
             <PostDate post={post} />
             {/*<PostTags post={post} /> removed */}
             <PostTitle post={post} />
-            <PostTags post={post} />
-            {/*<PostFeaturedImage post={post} /> removed*/}
+            <PostTags post={post} /> {/* added */}
+            {/*<PostFeaturedImage post={post} /> removed */}
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
           </div>
@@ -49,10 +49,9 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 
     <footer>
       <Pagination currentPage={1} numberOfPages={numberOfPages} />
-      <BlogTagsLink heading="Tags" tags={tags} /> {/* added */}
+      <BlogTagsLink heading="Tags" tags={tags} /> {/* renamed */}
     </footer>
   </div>
-{/*
   <div slot="aside" class={styles.aside}>
     <BlogPostsLink heading="Recommended" posts={rankedPosts} />
     <BlogTagsLink heading="Categories" tags={tags} />

@@ -62,6 +62,11 @@
   background: rgba(253, 235, 236, 1) !important;
 }
 
+/* Tag Pageでcalss = tag defaultの場合にlight grayが表示されなかったため、追加 */
+.tag.default {
+  color: rgb(28, 56, 41);
+  background: rgba(227, 226, 224, 0.5) !important;
+}
 .tag.light-gray {
   color: rgb(28, 56, 41);
   background: rgba(227, 226, 224, 0.5) !important;

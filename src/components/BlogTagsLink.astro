@@ -13,7 +13,7 @@ const { heading, tags } = Astro.props
 ---
 
 <div class="blog-tags-link">
-  <h3>{heading}</h3>
+  <h2>{heading}</h2>
   {
     tags.length === 0 ? (
       <NoContents contents={tags} />
@@ -34,8 +34,8 @@ const { heading, tags } = Astro.props
 <style>
   .blog-tags-link {
   }
-  .blog-tags-link h3 {
-    margin: 2rem 0 0; /* modified original all 0 */
+  .blog-tags-link h2 {
+    margin: 2rem 0 0; /* modified original margin: 0 */
     padding-left: 0.4rem;
     color: #777;
     font-size: 0.95rem;
@@ -46,7 +46,7 @@ const { heading, tags } = Astro.props
     margin-top: 0.3rem;
     margin-block-end: 1rem;
     display: flex; /* added */
-    flex-wrap: wrap; /* added */
+    flex-wrap:wrap; /* added */
   }
   .blog-tags-link ul li {
     position: relative;
