@@ -11,17 +11,24 @@ import NoContents from '../components/NoContents.astro'
 import PostDate from '../components/PostDate.astro'
 import PostTags from '../components/PostTags.astro'
 import PostTitle from '../components/PostTitle.astro'
-import PostFeaturedImage from '../components/PostFeaturedImage.astro'
+//import PostFeaturedImage from '../components/PostFeaturedImage.astro'
 import PostExcerpt from '../components/PostExcerpt.astro'
 import ReadMoreLink from '../components/ReadMoreLink.astro'
 import Pagination from '../components/Pagination.astro'
-import BlogPostsLink from '../components/BlogPostsLink.astro'
+//import BlogPostsLink from '../components/BlogPostsLink.astro'
 import BlogTagsLink from '../components/BlogTagsLink.astro'
 import styles from '../styles/blog.module.css'
 
+{/*
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   getPosts(NUMBER_OF_POSTS_PER_PAGE),
   getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
+replaced by the below */}
+const [posts, tags, numberOfPages] = await Promise.all([
+  getPosts(NUMBER_OF_POSTS_PER_PAGE),
   getAllTags(),
   getNumberOfPages(),
 ])
