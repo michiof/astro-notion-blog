@@ -2,7 +2,7 @@
 import type { SelectProperty } from '../../../../../lib/interfaces.ts'
 import {
   getPostsByTagAndPage,
-  getRankedPosts,
+  //getRankedPosts,
   getAllTags,
   getNumberOfPagesByTag,
 } from '../../../../../lib/notion/client.ts'
@@ -78,7 +78,7 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
             <PostDate post={post} />
             <PostTitle post={post} />
             <PostTags post={post} /> {/* changed order */}
-            <PostFeaturedImage post={post} />
+            {/*<PostFeaturedImage post={post} /> removed */}
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
           </div>
