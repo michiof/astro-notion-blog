@@ -1,13 +1,13 @@
 ---
 import * as interfaces from '../../lib/interfaces.ts'
 import {
-  getPosts,
+  //getPostsgetPosts,
   getAllPosts,
-  getRankedPosts,
+  //getRankedPosts,
   getPostBySlug,
-  getPostsByTag,
+  //getPostsByTag,
   getBlock,
-  getAllTags,
+  //getAllTags,
   getAllBlocksByBlockId,
   downloadFile,
 } from '../../lib/notion/client.ts'
@@ -38,6 +38,7 @@ if (!post) {
   throw new Error('Post not found. slug: ${slug}')
 }
 
+{/*
 const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
   await Promise.all([
     getAllBlocksByBlockId(post.PageId),
@@ -46,6 +47,12 @@ const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
     getPosts(5),
     getAllTags(),
     getPostsByTag(post.Tags[0]?.name, 6),
+  ])
+ replaced by the below */}
+const [blocks, allPosts] =
+  await Promise.all([
+    getAllBlocksByBlockId(post.PageId),
+    getAllPosts(),
   ])
 
 const fileAtacchedBlocks = extractTargetBlocks('image', blocks)
