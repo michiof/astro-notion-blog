@@ -2,7 +2,7 @@
 import type { SelectProperty } from '../../../../../lib/interfaces.ts'
 import {
   getPostsByTagAndPage,
-  getRankedPosts,
+  //getRankedPosts,
   getAllTags,
   getNumberOfPagesByTag,
 } from '../../../../../lib/notion/client.ts'
@@ -40,9 +40,16 @@ export async function getStaticPaths() {
 
 const { tag, page } = Astro.params
 
+{/*
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   getPostsByTagAndPage(tag, parseInt(page, 10)),
   getRankedPosts(),
+  getAllTags(),
+  getNumberOfPagesByTag(tag),
+])
+replaced by the blow */}
+const [posts, tags, numberOfPages] = await Promise.all([
+  getPostsByTagAndPage(tag, parseInt(page, 10)),
   getAllTags(),
   getNumberOfPagesByTag(tag),
 ])
