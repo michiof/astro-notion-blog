@@ -15,7 +15,7 @@ import PostFeaturedImage from '../../../../../components/PostFeaturedImage.astro
 import PostExcerpt from '../../../../../components/PostExcerpt.astro'
 import ReadMoreLink from '../../../../../components/ReadMoreLink.astro'
 import Pagination from '../../../../../components/Pagination.astro'
-import BlogPostsLink from '../../../../../components/BlogPostsLink.astro'
+//import BlogPostsLink from '../../../../../components/BlogPostsLink.astro'
 import BlogTagsLink from '../../../../../components/BlogTagsLink.astro'
 import styles from '../../../../../styles/blog.module.css'
 import '../../../../../styles/notion-color.css'
@@ -40,9 +40,16 @@ export async function getStaticPaths() {
 
 const { tag, page } = Astro.params
 
+{/*
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   getPostsByTagAndPage(tag, parseInt(page, 10)),
   getRankedPosts(),
+  getAllTags(),
+  getNumberOfPagesByTag(tag),
+])
+replaced by the below */}
+const [posts, tags, numberOfPages] = await Promise.all([
+  getPostsByTagAndPage(tag, parseInt(page, 10)),
   getAllTags(),
   getNumberOfPagesByTag(tag),
 ])
@@ -69,9 +76,8 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
         posts.map((post) => (
           <div class={styles.post} key={post.Slug}>
             <PostDate post={post} />
-            {/*<PostTags post={post} /> removed */}
             <PostTitle post={post} />
-            <PostTags post={post} /> {/* added */}
+            <PostTags post={post} /> {/* changed order */}
             <PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
