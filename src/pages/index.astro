@@ -2,7 +2,7 @@
 import { NUMBER_OF_POSTS_PER_PAGE } from '../server-constants.ts'
 import {
   getPosts,
-  getRankedPosts,
+  //getRankedPosts,
   getAllTags,
   getNumberOfPages,
 } from '../lib/notion/client.ts'
@@ -11,17 +11,24 @@ import NoContents from '../components/NoContents.astro'
 import PostDate from '../components/PostDate.astro'
 import PostTags from '../components/PostTags.astro'
 import PostTitle from '../components/PostTitle.astro'
-import PostFeaturedImage from '../components/PostFeaturedImage.astro'
+//import PostFeaturedImage from '../components/PostFeaturedImage.astro'
 import PostExcerpt from '../components/PostExcerpt.astro'
 import ReadMoreLink from '../components/ReadMoreLink.astro'
 import Pagination from '../components/Pagination.astro'
-import BlogPostsLink from '../components/BlogPostsLink.astro'
+//import BlogPostsLink from '../components/BlogPostsLink.astro'
 import BlogTagsLink from '../components/BlogTagsLink.astro'
 import styles from '../styles/blog.module.css'
 
+{/*
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   getPosts(NUMBER_OF_POSTS_PER_PAGE),
   getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
+replaced by the below */}
+const [posts, tags, numberOfPages] = await Promise.all([
+  getPosts(NUMBER_OF_POSTS_PER_PAGE),
   getAllTags(),
   getNumberOfPages(),
 ])
@@ -36,9 +43,8 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
         posts.map((post) => (
           <div class={styles.post} key={post.Slug}>
             <PostDate post={post} />
-            {/*<PostTags post={post} /> removed */}
             <PostTitle post={post} />
-            <PostTags post={post} /> {/* added */}
+            <PostTags post={post} /> {/* changed order */}
             {/*<PostFeaturedImage post={post} /> removed */}
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
