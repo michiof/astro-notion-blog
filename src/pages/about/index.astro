@@ -10,5 +10,12 @@ const blocks = await getAllBlocksByBlockId(INDEX_PAGE_ID)
 <Layout>
   <div slot="main">
     <NotionBlocks blocks={blocks} isRoot={true} />
+    <div class="center"><a href="/">🏠 Home</a></div>
   </div>
 </Layout>
+
+<style>
+  .center {
+      text-align: center;
+  }
+</style>
