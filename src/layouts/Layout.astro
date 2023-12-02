@@ -125,7 +125,8 @@ if (database.Icon && database.Icon.Type === 'file') {
               </h1>
               <div class="header-menu-container">
                 <div class="nav-menu">
-                  <a href="/">Blog</a>&nbsp;|&nbsp;<a href="/about">About</a>
+                  <a href="/">Home</a>
+                  <a href="/about">About Me</a>
                 </div>
                 <div class="header-search-button-container">
                     <SearchButton />
@@ -291,6 +292,30 @@ if (database.Icon && database.Icon.Type === 'file') {
   main footer a {
     color: inherit;
     text-decoration: underline;
+  }
+
+  /* added header-menu CSS */
+  .header-menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.7rem 0;
+  }
+  .nav-menu a {
+    text-decoration: none;
+    color: #777;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-right: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border: 0.5px solid gray;
+    border-radius: 13px;
+    transition: all 0.3s ease;
+  }
+  .nav-menu a:hover {
+    background-color: #ddd;
+    border-color: #ddd;
+    cursor: pointer;
   }
 </style>
 
@@ -460,12 +485,4 @@ if (database.Icon && database.Icon.Type === 'file') {
     display: inline-block;
     min-height: 0.9rem;
   }
-
-  /* ヘッダーメニューのスタイル */
-  .header-menu-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-
 </style>
