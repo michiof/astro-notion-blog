@@ -123,13 +123,20 @@ if (database.Icon && database.Icon.Type === 'file') {
                   }
                 </a>
               </h1>
+              <div class="header-menu-container">
+                <div class="nav-menu">
+                  <a href="/">Blog</a>&nbsp;|&nbsp;<a href="/about">About</a>
+                </div>
+                <div class="header-search-button-container">
+                    <SearchButton />
+                </div>
+              </div>
               <div class="description">
                 {database.Description}
               </div>
             </header>
 
             <slot name="main" />
-            <SearchButton />
 
             <footer>
               <div>
@@ -261,6 +268,11 @@ if (database.Icon && database.Icon.Type === 'file') {
   main header div.description {
     padding: 0.3rem 0 0.6rem;
     font-size: 0.95rem;
+  }
+
+  main header > div.search-button-container {
+    margin: 8px 0 0;
+    width:20%
   }
 
   main footer {
@@ -448,4 +460,12 @@ if (database.Icon && database.Icon.Type === 'file') {
     display: inline-block;
     min-height: 0.9rem;
   }
+
+  /* ヘッダーメニューのスタイル */
+  .header-menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
 </style>
