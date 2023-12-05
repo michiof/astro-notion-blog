@@ -10,10 +10,11 @@ const { post } = Astro.props
 ---
 
 <div class="read-more-link">
-  <a href={getPostLink(post.Slug)}>&rarr; Read more</a>
+  <a href={getPostLink(post.Slug)}>Read &rarr; </a>
 </div>
 
 <style>
+  /*
   .read-more-link {
     color: var(--fg);
   }
@@ -23,6 +24,24 @@ const { post } = Astro.props
     font-weight: 500;
     line-height: 2rem;
     text-decoration: underline;
+  }*/
+  .read-more-link {
+    margin: 0.75rem 0 1.0rem 0;
+  }
+  .read-more-link a {
+    text-decoration: none;
+    color: #777;
+    font-size: 0.95rem;
+    font-weight: bold;
+    padding: 0.3rem 0.8rem;
+    border: 0.5px solid gray;
+    border-radius: 13px;
+    transition: all 0.3s ease;
+  }
+  .read-more-link a:hover {
+    background-color: #ddd;
+    border-color: #ddd;
+    cursor: pointer;
   }
   @media (max-width: 640px) {
     .read-more-link a {
