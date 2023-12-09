@@ -4,6 +4,7 @@ import { getAllBlocksByBlockId } from '../../lib/notion/client.ts'
 import Layout from '../../layouts/Layout.astro'
 import NotionBlocks from '../../components/NotionBlocks.astro'
 import BackIcon from '../../components/BackIcon.astro'
+import HomeIcon from '../../components/HomeIcon.astro'
 
 const blocks = await getAllBlocksByBlockId(INDEX_PAGE_ID)
 ---
@@ -12,7 +13,7 @@ const blocks = await getAllBlocksByBlockId(INDEX_PAGE_ID)
   <div slot="main">
     <BackIcon />
     <NotionBlocks blocks={blocks} isRoot={true} />
-    <a href="/" class="home-link">🏠 Home</a>
+    <HomeIcon />
   </div>
 </Layout>
 
