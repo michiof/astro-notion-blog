@@ -1,13 +1,13 @@
 ---
 import * as interfaces from '../../lib/interfaces.ts'
 import {
-  getPosts,
+  //getPosts,
   getAllPosts,
-  getRankedPosts,
+  //getRankedPosts,
   getPostBySlug,
-  getPostsByTag,
+  //getPostsByTag,
   getBlock,
-  getAllTags,
+  //getAllTags,
   getAllBlocksByBlockId,
   downloadFile,
 } from '../../lib/notion/client.ts'
@@ -22,8 +22,9 @@ import PostTags from '../../components/PostTags.astro'
 import PostTitle from '../../components/PostTitle.astro'
 import PostBody from '../../components/PostBody.astro'
 import PostRelativeLink from '../../components/PostRelativeLink.astro'
-import BlogPostsLink from '../../components/BlogPostsLink.astro'
-import BlogTagsLink from '../../components/BlogTagsLink.astro'
+//import BlogPostsLink from '../../components/BlogPostsLink.astro'
+//import BlogTagsLink from '../../components/BlogTagsLink.astro'
+import BackIcon from '../../components/BackIcon.astro'
 import styles from '../../styles/blog.module.css'
 
 export async function getStaticPaths() {
@@ -38,6 +39,7 @@ if (!post) {
   throw new Error('Post not found. slug: ${slug}')
 }
 
+{/*
 const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
   await Promise.all([
     getAllBlocksByBlockId(post.PageId),
@@ -46,6 +48,12 @@ const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
     getPosts(5),
     getAllTags(),
     getPostsByTag(post.Tags[0]?.name, 6),
+  ])
+replaced by the below */}
+const [blocks, allPosts] =
+  await Promise.all([
+    getAllBlocksByBlockId(post.PageId),
+    getAllPosts(),
   ])
 
 const fileAtacchedBlocks = extractTargetBlocks('image', blocks)
@@ -101,18 +109,20 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 >
   <div slot="main" class={styles.main}>
     <div class={styles.post}>
+      <BackIcon/>
       <PostDate post={post} />
-      <PostTags post={post} />
+      {/*<PostTags post={post} /> removed*/}
       <PostTitle post={post} enableLink={false} />
-      <PostBody blocks={blocks} />
       <PostTags post={post} />
+      <PostBody blocks={blocks} />
+      <PostTags post={post}/>
 
       <footer>
         <PostRelativeLink prevPost={prevPost} nextPost={nextPost} />
       </footer>
     </div>
   </div>
-
+<!-- removed
   <div slot="aside" class="aside">
     <BlogPostsLink
       heading="Posts in the same category"
@@ -124,4 +134,5 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
     <BlogPostsLink heading="Latest posts" posts={recentPosts} />
     <BlogTagsLink heading="Categories" tags={tags} />
   </div>
+ -->
 </Layout>

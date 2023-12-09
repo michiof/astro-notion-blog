@@ -50,7 +50,7 @@ if (database.Icon && database.Icon.Type === 'file') {
 ---
 
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="max-image-preview:large" />
@@ -59,6 +59,7 @@ if (database.Icon && database.Icon.Type === 'file') {
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
     <link rel="canonical" href={siteURL} />
+    <link rel="icon" href="favicon.png">
     <meta property="og:url" content={siteURL} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
@@ -74,6 +75,7 @@ if (database.Icon && database.Icon.Type === 'file') {
       integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
       crossorigin="anonymous"
     />
+    <link rel="icon" href="favicon.png"> <!-- added  -->
   </head>
   <body>
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
@@ -90,6 +92,7 @@ if (database.Icon && database.Icon.Type === 'file') {
 
       <div>
         <main>
+
           <div class="content">
             <header>
               <h1>
@@ -120,9 +123,19 @@ if (database.Icon && database.Icon.Type === 'file') {
                   }
                 </a>
               </h1>
+              <div class="header-menu-container">
+                <div class="nav-menu">
+                  <a href="/about">About Me</a>
+                </div>
+                <div class="header-search-button-container">
+                    <SearchButton />
+                </div>
+              </div>
+            <!-- removed
               <div class="description">
                 {database.Description}
               </div>
+            -->
             </header>
 
             <slot name="main" />
@@ -137,11 +150,12 @@ if (database.Icon && database.Icon.Type === 'file') {
             </footer>
           </div>
         </main>
-
+<!-- removed
         <aside>
           <SearchButton />
           <slot name="aside" />
         </aside>
+-->
       </div>
     </div>
 
@@ -157,11 +171,14 @@ if (database.Icon && database.Icon.Type === 'file') {
 <style>
   .container {
     min-height: 100vh;
+    max-width: 780px; /* added */
+    margin: 0 auto; /* added */
   }
 
   .container > div {
-    display: flex;
-    max-width: 1280px;
+    /* display: flex; removed */
+    max-width: 780px; /* original: max-width: 1280px */
+    margin: 0 auto; /* added */
   }
   @media (max-width: 640px) {
     .container > div {
@@ -214,10 +231,14 @@ if (database.Icon && database.Icon.Type === 'file') {
 
   main header {
     padding: 20px 0 20px;
+    align: center; /* added */
+    border-bottom: dotted 0.5px #333; /* added */
+    margin-bottom: 1.3rem;  /* added */
   }
   main header h1 {
     font-weight: 700;
     color: #333;
+    margin-bottom: 0.5rem;  /* added */
   }
   main header h1 a {
     display: block;
@@ -251,6 +272,11 @@ if (database.Icon && database.Icon.Type === 'file') {
     font-size: 0.95rem;
   }
 
+  main header > div.search-button-container {
+    margin: 8px 0 0;
+    width:20%
+  }
+
   main footer {
     margin: 30px 0 10px;
     text-align: center;
@@ -267,6 +293,30 @@ if (database.Icon && database.Icon.Type === 'file') {
   main footer a {
     color: inherit;
     text-decoration: underline;
+  }
+
+  /* added header-menu CSS */
+  .header-menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.1rem 0 0 0;
+  }
+  .nav-menu a {
+    text-decoration: none;
+    color: #777;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-right: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border: 0.5px solid gray;
+    border-radius: 13px;
+    transition: all 0.3s ease;
+  }
+  .nav-menu a:hover {
+    background-color: #ddd;
+    border-color: #ddd;
+    cursor: pointer;
   }
 </style>
 
@@ -285,7 +335,7 @@ if (database.Icon && database.Icon.Type === 'file') {
     --geist-foreground: #000;
     --geist-success: #690;
 
-    --radius: 4px;
+    --radius: 10px; /* original 4px*/
 
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -311,9 +361,10 @@ if (database.Icon && database.Icon.Type === 'file') {
     background: var(--bg);
     color: var(--fg);
     font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      Helvetica, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+      Helvetica, 'Hiragino Kaku Gothic ProN',
       'Hiragino Sans GB', メイリオ, Meiryo, 'Apple Color Emoji', Arial,
       sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    letter-spacing: 0.01em; /* added */
 
     /*background-image: radial-gradient(#ddd 1px, transparent 1px),
       radial-gradient(#ddd 1px, transparent 1px);*/
@@ -372,7 +423,7 @@ if (database.Icon && database.Icon.Type === 'file') {
   ul {
     color: #222;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.05rem; /* original 1rem */
     line-height: 1.8rem;
   }
   ul,
