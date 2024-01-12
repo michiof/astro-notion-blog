@@ -96,41 +96,43 @@ if (database.Icon && database.Icon.Type === 'file') {
         <main>
           <div class="content">
             <header>
-              <h1>
-                <a href={getNavLink('/')}>
-                  {
-                    database.Icon && database.Icon.Type === 'emoji' ? (
-                      <>
-                        <span>{database.Icon.Emoji}</span>
-                        {database.Title}
-                      </>
-                    ) : database.Icon && database.Icon.Type === 'external' ? (
-                      <>
-                        <img src={database.Icon.Url} alt="Site icon image" />
-                        {database.Title}
-                      </>
-                    ) : database.Icon && database.Icon.Type === 'file' ? (
-                      <>
-                        <img
-                          src={customIconURL}
-                          class="custom-icon"
-                          alt="Site icon image"
-                        />
-                        {database.Title}
-                      </>
-                    ) : (
-                      database.Title
-                    )
-                  }
-                </a>
-              </h1>
+              <div class="title-and-darkmode">
+                <h1>
+                  <a href={getNavLink('/')}>
+                    {
+                      database.Icon && database.Icon.Type === 'emoji' ? (
+                        <>
+                          <span>{database.Icon.Emoji}</span>
+                          {database.Title}
+                        </>
+                      ) : database.Icon && database.Icon.Type === 'external' ? (
+                        <>
+                          <img src={database.Icon.Url} alt="Site icon image" />
+                          {database.Title}
+                        </>
+                      ) : database.Icon && database.Icon.Type === 'file' ? (
+                        <>
+                          <img
+                            src={customIconURL}
+                            class="custom-icon"
+                            alt="Site icon image"
+                          />
+                          {database.Title}
+                        </>
+                      ) : (
+                        database.Title
+                      )
+                    }
+                  </a>
+                </h1>
+                <Darkmode />
+              </div>
               <div class="header-menu-container">
                 <div class="nav-menu">
                   <a href="/about">About Me</a>
                 </div>
                 <div class="header-search-button-container">
                   <SearchButton />
-                  <Darkmode />
                 </div>
               </div>
               <!-- removed
@@ -298,6 +300,12 @@ if (database.Icon && database.Icon.Type === 'file') {
   }
 
   /* added header-menu CSS */
+  .title-and-darkmode {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    justify-content: space-between; /* Adjust this as needed */
+  }
+
   .header-menu-container {
     display: flex;
     justify-content: space-between;
