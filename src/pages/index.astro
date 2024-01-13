@@ -55,7 +55,7 @@ const [posts, tags, numberOfPages] = await Promise.all([
 
     <footer>
       <Pagination currentPage={1} numberOfPages={numberOfPages} />
-      <BlogTagsLink heading="Tags" tags={tags} /> {/* renamed */}
+      <BlogTagsLink heading="Find Posts by Tag: " tags={tags} />
     </footer>
   </div>
 <!-- removed

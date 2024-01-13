@@ -1,18 +1,21 @@
 ---
 import { INDEX_PAGE_ID } from '../../server-constants.ts'
-import { getAllBlocksByBlockId } from '../../lib/notion/client.ts'
+import { getAllBlocksByBlockId, getAllTags } from '../../lib/notion/client.ts'
 import Layout from '../../layouts/Layout.astro'
 import NotionBlocks from '../../components/NotionBlocks.astro'
 import BackIcon from '../../components/BackIcon.astro'
+import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import HomeIcon from '../../components/HomeIcon.astro'
 
 const blocks = await getAllBlocksByBlockId(INDEX_PAGE_ID)
+const [tags] = await Promise.all([getAllTags()])
 ---
 
 <Layout>
   <div slot="main">
     <BackIcon />
     <NotionBlocks blocks={blocks} isRoot={true} />
+    <BlogTagsLink heading="Find Posts by Tag: " tags={tags} />
     <HomeIcon />
   </div>
 </Layout>
