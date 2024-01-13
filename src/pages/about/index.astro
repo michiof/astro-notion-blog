@@ -15,8 +15,11 @@ const [tags] = await Promise.all([getAllTags()])
   <div slot="main">
     <BackIcon />
     <NotionBlocks blocks={blocks} isRoot={true} />
-    <BlogTagsLink heading="Find Posts by Tag: " tags={tags} />
-    <HomeIcon />
+    <div class="dotted-line"></div>
+    <footer>
+      <BlogTagsLink heading="Find Posts by Tag: " tags={tags} />
+      <HomeIcon />
+    </footer>
   </div>
 </Layout>
 
@@ -46,5 +49,9 @@ const [tags] = await Promise.all([getAllTags()])
   .back-button:hover {
       background-color: #ddd;
       border: none;
+  }
+  .dotted-line {
+    border-bottom: 1px dashed #888;
+    margin-top: 2rem;
   }
 </style>
