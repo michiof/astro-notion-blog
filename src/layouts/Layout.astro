@@ -123,6 +123,9 @@ if (database.Icon && database.Icon.Type === 'file') {
                   }
                 </a>
               </h1>
+              <div class="description">
+                {database.Description}
+              </div>
               <div class="header-menu-container">
                 <div class="nav-menu">
                   <a href="/about">About Me</a>
@@ -131,11 +134,6 @@ if (database.Icon && database.Icon.Type === 'file') {
                   <SearchButton />
                 </div>
               </div>
-              <!-- removed
-              <div class="description">
-                {database.Description}
-              </div>
-            -->
             </header>
 
             <slot name="main" />
